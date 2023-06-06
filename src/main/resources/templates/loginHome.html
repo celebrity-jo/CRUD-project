@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <link th:href="@{/css/bootstrap.min.css}"
+        href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container" style="max-width: 600px">
+  <div class="py-5 text-center">
+    <h2>홈 화면</h2>
+  </div>
+  <h4 class="mb-3" th:text="|로그인: ${user.userId}|">로그인 사용자 이름</h4>
+  <hr class="my-4">
+  <div class="row">
+    <div class="col">
+      <button class="w-100 btn btn-secondary btn-lg" type="button"
+              th:onclick="|location.href='@{/board}'|">
+        게시판
+      </button>
+    </div>
+    <div class="col">
+      <button class="w-100 btn btn-secondary btn-lg" type="button"
+              th:onclick="|location.href='@{/users/{id}/edit(id=${user.id})}'|">
+        회원수정
+      </button>
+    </div>
+    <div class="col">
+      <form th:action="@{/logout}" method="post">
+        <button class="w-100 btn btn-dark btn-lg" type="submit">
+          로그아웃
+        </button>
+      </form>
+    </div>
+  </div>
+  <p>로그인한 사용자만 볼 수 있도록 필터 혹은 인터셉터 적용하기</p>
+  <p>화면 UI 바꿔보기</p>
+  <p>시간되면 채팅기능 추가하기</p>
+  <p>2023.05.23 게시글 수정은 로그인 유저만 가능하도록 했음</p>
+  <p>2023.05.23 페이징 구현은 했으나, Next 클릭 시 있지도 않은 6번으로 넘어감</p>
+  <p>2023.05.24 Previous와 Next가 없을 경우 클릭 안되게 설정</p>
+  <p>2023.05.25 게시물 등록 시 에디터 추가 완료 (섬머노트)</p>
+  <p>2023.05.25 </p>
+  <hr class="my-4">
+</div> <!-- /container -->
+</body>
+</html>

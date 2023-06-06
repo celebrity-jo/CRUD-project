@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 770px;
+        }
+        .field-error {
+            border-color: #dc3545;
+            color: #dc3545;
+        }
+        .content {
+            text-overflow: ellipsis;
+        }
+        /* 글자수 처리하는 css, 현재 주석처리했음
+        .title {
+            width:150px;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+            display:block;
+        }
+        .content {
+            width:200px;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+            display:block;
+        }
+        */
+    </style>
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>게시글 등록</h2>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary float-end"
+                    onclick="location.href='addForm.html'"
+                    th:onclick="|location.href='@{/board/add}'|"
+                    type="button" >게시물 등록</button>
+        </div>
+    </div>
+
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>조회수</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="board : ${board}">
+                <td><a href="post.html" th:href="@{/board/{id}(id=${board.id})}"  th:text="${board.id}">ID</a></td>
+                <td><a href="post.html" th:href="@{|/board/${board.id}|}" class="title" th:text="${board.title}">제목</a></td>
+                <td th:text="${board.userId}">userId</td>
+                <td th:text="${board.readCount}">0</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page" >         <!--센터로 이동-->
+        <div class="paging" id="paging_board">
+            <ul class="pagination">
+                <!-- Previous 시작 -->
+<!--                th:if="${page.startPage != 1}"-->
+                <li class="paginate_button page-item previous" id="previous">
+                    <!-- startPage-5가 1보다 작으면 링크를 ''로 해주고 onclick="return false"로 클릭 안되게 설정 -->
+                    <!-- startPage-5가 1보다 크면 startPage-5 -->
+                    <a th:href="${page.startPage - 5} < 1 ? '' : '/board?page=' + ${page.startPage - 5}"
+                       th:onclick="${page.startPage - 5} < 1 ? 'return false'"
+                       aria-controls="boardList" data-dt-idx="0" tabindex="0" class="page-link">Previous
+                    </a>
+                </li>
+                <!-- Previous 끝 -->
+
+                <!-- Page번호 시작 -->
+                <li th:each="pageNo: ${#numbers.sequence(page.startPage, page.endPage)}"
+                    class="paginate_button page-item" th:classappend="${page.currentPage == pageNo} ? 'active' : ''">
+                    <a th:href="'/board?page=' + ${pageNo}" aria-controls="boardList" data-dt-idx="1" tabindex="0" class="page-link" th:text="${pageNo}">${pageNo}</a>
+                </li>
+                <!-- Page번호 끝 -->
+
+                <!-- Next 시작 -->
+<!--                th:if="${page.endPage >= page.startPage}"-->
+                <li class="paginate_button page-item next" id="next">
+                    <!-- endPage가 startPage+5보다 작으면 링크를 ''로 해주고 onclick="return false"로 클릭 안되게 설정 -->
+                    <!-- endPage가 startPage+5보다 크면 링크를 startPage+5로 설정 -->
+                    <a th:href="${page.endPage < page.startPage + 5} ? '' : '/board?page=' + ${page.startPage+5}"
+                       th:onclick="${page.endPage < page.startPage + 5} ? 'return false'"
+                       aria-controls="boardList" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                </li>
+                <!-- Next 끝 -->
+            </ul>
+        </div></div>
+
+</div> <!-- /container -->
+
+</body>
+</html>
