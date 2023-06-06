@@ -38,6 +38,9 @@ create table users (
  createDate timestamp,
  primary key (id)
 );
+
+insert into users(userId, password, username, email, address, userRole, createDate) values ('hello','world', '스프링', 'hello@naver.com', '서울특별시', 'USER', NOW());
+insert into users(userId, password, username, email, address, userRole, createDate) values ('test','test', '테스트', 'test@test.co.kr', '제주도', 'USER', NOW());
 '''
 
 ### BOARD
@@ -61,6 +64,9 @@ create table board (
  foreign key(userId) references user(id) on update cascade,
  primary key (id)
 );
+
+insert into board(userId, title, content, createDate) values (2, '제목', '내용', NOW());
+insert into board(userId, title, content, createDate) values (1, '게시글', '입니다', NOW());
 '''
 
 ### REPLY
