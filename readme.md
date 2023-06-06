@@ -13,7 +13,7 @@
 - bloguser 사용자로 접속
 - use blog; 데이터베이스 선택
 
-# USER
+### USER
 - id         (유저 id)
 - userId     (아이디)
 - password   (비밀번호)
@@ -39,7 +39,7 @@ create table users (
 );
 '''
 
-# BOARD
+### BOARD
 - id         (게시글 id)
 - userId     (작성자)
 - title      (제목)
@@ -62,7 +62,7 @@ create table board (
 );
 '''
 
-# REPLY
+### REPLY
 - id		 (댓글 id)
 - userId	 (댓글 작성자 id)
 - boardId	 (게시글 id)
