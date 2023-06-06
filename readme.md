@@ -90,6 +90,6 @@ create table reply (
 );
 '''
 
-기타
+기타 설명
 - Session을 이용해 로그인 기능 구현
 - DataSource로 데이터베이스 커넥션 풀을 이용 (10개의 커넥션)
