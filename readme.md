@@ -91,5 +91,9 @@ create table reply (
 '''
 
 기타 설명
+- 회원 가입 기능 구현
 - Session을 이용해 로그인 기능 구현
 - DataSource로 데이터베이스 커넥션 풀을 이용 (10개의 커넥션)
+- 썸머노트를 이용해 게시글 작성 (https://summernote.org/)
+- 댓글 기능 구현
+- 게시판 페이징 구현 (Previous, 1~5, Next)
