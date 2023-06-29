@@ -11,8 +11,7 @@
 
 ## H2 테이블 생성
 
-- bloguser 사용자로 접속
-- use blog; 데이터베이스 선택
+- root 사용자로 접속
 
 ### USER
 - id         (유저 id)
