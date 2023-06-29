@@ -20,7 +20,7 @@
 - userName   (이름)
 - email      (이메일)
 - address    (주소)
-- userRole   (관리자인지 사용자인지)
+- userRole   (관리자, 사용자 구분)
 - createDate (생성날짜)
 
 
